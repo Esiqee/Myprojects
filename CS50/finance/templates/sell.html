@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <h1>Sell</h1>
+    <h2>This page allows you to sell the desired number of shares.</h2>
+    <p>You can select the symbol of the stock you currently own that you wish to sell. Then enter the desired number of shares to sell.
+        Please keep in mind that it cannot exceed the number of shares you currently own.</p>
+        <!-- https://www.w3schools.com/tags/tag_select.asp -->
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select name ="symbol" style="width: 200px; height: 35px;">
+                {% for symbol in symbols %}
+                    <option value="{{ symbol }}">{{ symbol }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Shares" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}

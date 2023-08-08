@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+    <h1>Dashboard</h1>
+    <h2>Welcome to your dashboard. Here, you can see all your assets.</h2>
+    <p>If you want to trade assets you own, simply click the buy or sell button and you will be redirected to the relevant page.</p>
+    <div class="section">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Current account cash balance</th>
+                    <th>Stocks balance</th>
+                    <th>Total balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ user_cash | usd }}</td>
+                    <td>$<span id="result">{sum}</span></td>
+                    <td>$<span id="result2">{sum2}</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Quick navigation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the database entries to display them in this table + implemenation of real time values -->
+                {% for row in dbinfo %}
+                    <tr>
+                        <td>{{ row["symbol"] }}</td>
+                        <td>{{ lookup(row["symbol"])["name"] }}</td>
+                        <td>{{ row["shares"] }}</td>
+                        <td>{{ lookup(row["symbol"])["price"] }}</td>
+                        <td class="total">{{ "{:.2f}".format(lookup(row["symbol"])["price"] * row["shares"]) }}</td>
+                        <td><a class="btn btn-primary" href="{{ url_for("buy") }}">BUY</a> <a class="btn btn-primary" href="{{ url_for("sell") }}">SELL</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <script>
+            /* Calculation of real time values */
+            /*   Create variable, select all rows with total atribute <td class="total"> cause we want to use real time prices
+            for all rows in table created by our for loop ,then iterate over all elements convert to float and count sum. After calculation we will make result for both
+            current stock value and total value wich we need to fix on 2 decimal places to show correct formatting as it were asigned with usd function provided in helpers.py
+            since we cannot use result of calculation in jinja and asign it for usd function   */
+            /* https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll */
+
+            const totalElements = document.querySelectorAll('.total');
+
+            let sum = 0;
+            totalElements.forEach((element) => {
+            sum += parseFloat(element.textContent);
+            });
+
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = sum.toFixed(2);
+
+            const resultElement2 = document.getElementById('result2');
+            resultElement2.textContent = (sum + parseFloat("{{ user_cash }}")).toFixed(2);
+
+          </script>
+    </div>
+{% endblock %}

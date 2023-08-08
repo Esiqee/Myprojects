@@ -1,0 +1,35 @@
+html,
+body {
+  background-image: url("BG.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  color: white;
+  }
+
+.section {
+  text-align: center;
+}
+
+#submit-name {
+  margin-top: 10px;
+}
+
+#greeting {
+  opacity: 0;
+  transition: opacity 3s ease-in;
+}
+
+#intro-text {
+  opacity: 0;
+  transition: opacity 5s ease-in;
+}
+
+#next-page-btn {
+  opacity: 0;
+  transition: opacity 8s ease-in;
+}
+
+h1, h2, input, button, h3, p {
+  margin-bottom: 1em;
+}

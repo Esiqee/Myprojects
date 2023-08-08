@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Posted jobs
+{% endblock %}
+
+{% block main %}
+
+<h1 style="font-family: 'Comic Sans MS', cursive; font-size: 60px; margin-bottom: 75px;">Posted jobs</h1>
+
+<div class="section">
+    <table>
+        <thead>
+            <tr>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 20px;">ID</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 20px;">Company</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 20px;">Position</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 20px;">Contact</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 20px;">Location</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 20px;">Date (added)</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 20px;">Delete?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through the database entries to display them in this table -->
+            {% for row in dbinfo %}
+                <tr>
+                    <td>{{ row["id"] }}</td>
+                    <td>{{ row["company"] }}</td>
+                    <td>{{ row["position"] }}</td>
+                    <td>{{ row["contact"] }}</td>
+                    <td>{{ row["location"]  }}</td>
+                    <td>{{ row["date"]  }}</td>
+                    <td>
+                        <form action="/posted" method="POST">
+                            <input type="hidden" name="id" value="{{ row['id'] }}">
+                            <button class="btn btn-primary" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock %}

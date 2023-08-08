@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Jobs
+{% endblock %}
+
+{% block main %}
+
+<h1 style="font-family: 'Comic Sans MS', cursive; font-size: 60px; margin-bottom: 75px;">Available jobs</h1>
+
+<div class="section">
+    <table>
+        <thead>
+            <tr>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 25px;">Company</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 25px;">Position</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 25px;">Contact</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 25px;">Location</th>
+                <th style="font-family: 'Comic Sans MS', cursive; font-size: 25px;">Date (added)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through the database entries to display them in this table -->
+            {% for row in dbinfo %}
+                <tr>
+                    <td>{{ row["company"] }}</td>
+                    <td>{{ row["position"] }}</td>
+                    <td>{{ row["contact"] }}</td>
+                    <td>{{ row["location"]  }}</td>
+                    <td>{{ row["date"]  }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

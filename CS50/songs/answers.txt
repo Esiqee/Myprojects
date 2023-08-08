@@ -1,0 +1,9 @@
+Q:  If songs.db contains the top 100 songs of one listener from 2018, how would you characterize their audio aura?
+A:  I would get average energy, valence, and danceability to count aura as described.
+    Command would be: SELECT AVG(energy), AVG(valence), AVG(danceability) FROM songs;
+Q2: Hypothesize about why the way you’ve calculated this aura might not be very representative of the listener. What better ways of calculating this aura would you propose?
+A2: Calculation is based only at average energy, valence, and danceability, not authors/genres or how many times user listened to the track IMHO i would rather collect
+    also genre & times_listened data from user and i would do it more personalized rather on base of preferred AUTORS & GENRES to match the taste of the aura and emotion of user.
+    For example lets take top 10 tracks sorted by how many times user listened to them (assuming we have also columns "times_listened & genre"). When we have this data we can AI
+    do the magic and create personalized aura based on top listened authors and genres.
+    Command would be: SELECT genre, artist_id FROM songs ORDER BY times_listened LIMIT 10;

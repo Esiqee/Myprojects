@@ -47,3 +47,4 @@ def index():
 
         # Render page and add birthdays to template
         return render_template("index.html", birthdays=birthdays)
+        

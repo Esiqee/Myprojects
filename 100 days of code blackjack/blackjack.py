@@ -94,11 +94,6 @@ def blackjack():
   dealer(dealer_cards, result)
 
 
-  
-  
-  
-
-
-
 if __name__ == "__main__":
     main()
+  

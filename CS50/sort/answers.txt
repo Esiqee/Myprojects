@@ -1,0 +1,34 @@
+sort1 uses: Bubble Sort
+
+How do you know?: We can see it is way faster than sort3 programme in sorted column, wich means it is bubble sort. Why? Because bubble sort is checking if theres swaps available so if not (as it is in sorted array) it will make only n steps.
+
+sort2 uses: Merge Sort
+
+How do you know?: Merge Sort is known for its great performances when we have to work with high amount of element to sort. We can see this in example table of time tests down below.
+
+sort3 uses: Selection Sort
+
+How do you know?: We can see that times in 50k row are almost same, so we can beautifully see here how almost same amount of steps was made here wich means it is selection sort.
+
+
+//Time tests
+                sort 1
+
+        reversed        sorted      random
+5k      0.072           0.042       0.076
+10k     0.273           0.066       0.307
+50k     6.151           0.794       8.003
+
+                sort 2
+
+        reversed        sorted      random
+5k      0.046           0.038       0.044
+10k     0.064           0.068       0.134
+50k     0.889           0.476       0.590
+
+                sort 3
+
+        reversed        sorted      random
+5k      0.069           0.071       0.051
+10k     0.160           0.251       0.182
+50k     3.908           3.608       3.552

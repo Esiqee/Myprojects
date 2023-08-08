@@ -1,0 +1,20 @@
+                sort 1
+
+        reversed        sorted      random
+5k      0.072           0.042       0.076
+10k     0.273           0.066       0.307
+50k     6.151           0.794       8.003
+
+                sort 2
+
+        reversed        sorted      random
+5k      0.046           0.038       0.044
+10k     0.064           0.068       0.134
+50k     0.889           0.476       0.590
+
+                sort 3
+
+        reversed        sorted      random
+5k      0.069           0.071       0.051
+10k     0.160           0.251       0.182
+50k     3.908           3.608       3.552

@@ -1,0 +1,10 @@
+import libraries
+
+create Void variable
+
+___
+Create input INT
+
+create code for hashes in range of input 1-8 (if we were working in python, we could use .rjust)
+
+print function
